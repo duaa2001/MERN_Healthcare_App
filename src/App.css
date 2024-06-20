@@ -1,13 +1,40 @@
 .App {
   text-align: center;
+  background-color: #E6E6FA; 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
 }
 
-.App-logo {
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.App-header h1 {
+  font-size: 5rem; 
+  color: #FF69B4; 
+}
+
+.App-header h4 {
+  font-size: 1.5rem; 
+  color: #FF69B4; 
+}
+
+.image-container img { /* need to still resize*/
+  max-width: 100%; 
+  height: auto; 
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -35,4 +62,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
