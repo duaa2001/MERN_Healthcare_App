@@ -10,7 +10,12 @@ function App() {
       </header>
 
       <nav className="Nav-bar">
-       {/*Add nav bar here */}
+          <a href="#login">Login</a>
+          <a href="#resources">Resources</a>
+          <a href="#assessments">Assessments</a>
+          <a href="#threads">Threads</a>
+          <a href="#groups">Groups</a>
+          <a href="#faq">FAQ</a>
       </nav>
 
       <main className = "Main-content">
@@ -48,22 +53,4 @@ function App() {
 export default App;
 
 
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
  
