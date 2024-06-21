@@ -10,10 +10,15 @@
 
 .App-header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
+.Nav-bar {
+  background-color: white;
+  padding: 10px;
+  margin: 10px 0;
+}
 .App-header h1 {
   font-size: 5rem; 
   color: #FF69B4; 
@@ -24,9 +29,61 @@
   color: #FF69B4; 
 }
 
+.Main-content {
+  padding: 20px;
+}
+
 .image-container img { /* need to still resize*/
   max-width: 100%; 
   height: auto; 
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 20px 0;
+}
+
+.row a {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Makes it circular */
+  width: 200px; 
+  height: 200px; 
+  font-size: 15px;
+}
+
+.row a div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.latest  {
+  background-color: skyblue;
+  color: black; 
+}
+
+.new-moms-quicklink  {
+  background-color: pink;
+  color: black;
+}
+
+.chat-bot {
+  background-color: green; /* Background color of the chat button */
+  color: white; 
+}
+
+h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /* .App-logo {

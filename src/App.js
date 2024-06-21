@@ -17,19 +17,30 @@ function App() {
         <div className="image-container">
           <img src="/American Medical Association image.jpeg" alt="taken from American Medical Association" />
         </div>
-        <section>
-          <div className="latest">
 
-          </div>
-          <div className="new-moms-quicklink">
+        <section className="row">
+          <a href="/latest" className="latest">
+            <div>
+              <h5>Latest:</h5>
+              <p>Take our free breast cancer self-assessment NOW!</p>
+            </div>
+          </a>
 
-          </div>
-          <div className="chat-bot">
+          <a href="/new-moms" className="new-moms-quicklink">
+            <div>
+              <h5>New Mom:</h5>
+              <p>Join our Maternity Support Group</p>
+            </div>
+          </a>
 
-          </div>
+          <a href="/chat" className="chat-bot">
+            <div>
+              <h5>Chat:</h5>
+              <p>Chat with us!</p>
+            </div>
+          </a>
         </section>
       </main>
-      
     </div>
   );
 }
@@ -55,3 +66,4 @@ export default App;
 //       </header>
 //     </div>
 //   );
+ 
