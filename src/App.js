@@ -1,9 +1,13 @@
 //import logo from './logo.svg';
+import FAQ from './components/FAQ';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <div>
+        <FAQ />
+      </div>
       <header className="App-header">
         <h1>FEMCARE</h1> {/* Title */}
         <h4>....We all care</h4> {/* Subtitle */}
