@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <FAQ />
+        <FAQ/> {/* Temporarily add here to check code*/}
       </div>
       <header className="App-header">
         <h1>FEMCARE</h1> {/* Title */}
