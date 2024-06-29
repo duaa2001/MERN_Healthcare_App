@@ -28,7 +28,13 @@
   /*border: 2px solid #5b022e; */
   font-style: oblique;
   margin-bottom: 0;
+  text-shadow: 
+    -1px -1px 0 #5b022e,  
+    1px -1px 0 #5b022e,  
+    -1px 1px 0 #5b022e,  
+    1px 1px 0 #5b022e;
 }
+
 
 .App-header h4 {
   font-size: 1.5rem; 
@@ -75,12 +81,12 @@
 
 .latest  {
   background-color: skyblue;
-  color: whitesmoke; 
+  color: rgb(25, 35, 228) !important; 
 }
 
 .new-moms-quicklink  {
   background-color: pink;
-  color: whitesmoke;
+  color: rgb(238, 93, 9) !important;
 }
 
 .chat-bot {
@@ -100,4 +106,23 @@ h5 {
 
 .home-link:hover {
   text-decoration: underline;
+}
+
+.faq-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align:start;
+  background-color: #f78ec3;
+  color: rgb(81, 2, 75);
+}
+
+.faq-content h2 {
+  text-align: center;
+}
+
+.faq-content h2 + p {
+  text-align: center;
+
 }
