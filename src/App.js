@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import FAQ from './components/FAQ';
+import Resources from './components/Resources';
 import './App.css';
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <main className="Main-content">
           <Routes>
             <Route path="/login" element={<div>Login Component</div>} />
-            <Route path="/resources" element={<div>Resources Component</div>} />
+            <Route path="/resources" element={<Resources />} />
             <Route path="/assessments" element={<div>Assessments Component</div>} />
             <Route path="/threads" element={<div>Threads Component</div>} />
             <Route path="/groups" element={<div>Groups Component</div>} />
