@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import FAQ from './components/FAQ';
 import Resources from './components/Resources';
+import Chatbot from './components/Chatbot';
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/threads" element={<div>Threads Component</div>} />
             <Route path="/groups" element={<div>Groups Component</div>} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/chat" element={<Chatbot />} /> {/* for chatbot */}
             <Route
               path="/"
               element={
