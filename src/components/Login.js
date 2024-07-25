@@ -6,3 +6,63 @@
 // need a create account 
 
 // need a login
+
+import React, { useState } from "react";
+import axios from "axios";
+import {Link, Routes, Route } from "react-router-dom";
+import SignUp from "./LSignup"; // Import LSignup component
+
+function Login() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function submit(e) {
+        e.preventDefault(); //do not reload page upon submission
+
+        //calling the backend login
+        try {
+            const response = await axios.post('http://localhost:5001/api/login', { username, password });
+            // Handle successful login here
+            console.log(response.data);
+            console.log("Login was successful");
+        } catch (error) {
+            console.error('Login error:', error);
+        }
+    }
+ 
+    // Setting it up
+    return (
+        <div className="login">
+            <h2>Login</h2>
+            <form onSubmit={submit}>
+                <div>
+                    <label>Username</label>
+                    <input 
+                        type="text" 
+                        value={username} 
+                        onChange={(e) => setUsername(e.target.value)} 
+                        required 
+                    />
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input 
+                        type="password" 
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        required 
+                    />
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p>
+                OR... <Link to="/login/signup">Sign Up</Link>
+            </p>
+            <Routes>
+                <Route path="signup" element={<SignUp />} /> {/* Add SignUp route here */}
+            </Routes>
+        </div>
+    );
+}
+
+export default Login;

@@ -1,12 +1,13 @@
 import React from 'react';
 
+// FAQ page set up, can add more Q/As
+
 const FAQ = () => {
   return (
     <div className="faq-content">
       <h2>ABOUT US</h2>
       <p>Welcome to our women's healthcare site, dedicated to boosting health awareness and providing the support women need. Here, you can find community groups, threads for getting answers to your questions from other users, a wealth of informational resources, and self-assessments to check in on your health. Whether you're a newcomer or a regular visitor, we encourage you to explore and make the most of our supportive community and resources.</p>
-      {/* Set up FAQ Questions */}
-      {/* Set up Design */}
+    
       <h3>Where can I take an assessment to check if my symptoms might be serious?</h3>
       <p>You can check out our assessments tab here(link)</p>
       

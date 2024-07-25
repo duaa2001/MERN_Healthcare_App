@@ -3,7 +3,13 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import FAQ from './components/FAQ';
 import Resources from './components/Resources';
 import Chatbot from './components/Chatbot';
+import Login from './components/Login';
+import Threads from './components/Threads';
+import Assessment from './components/Assessments';
 import './App.css';
+
+// This is our home page
+// consider adding a tab instead 
 
 function App() {
   return (
@@ -27,10 +33,10 @@ function App() {
 
         <main className="Main-content">
           <Routes>
-            <Route path="/login" element={<div>Login Component</div>} />
+            <Route path="/login/*" element={<Login/>} />
             <Route path="/resources" element={<Resources />} />
-            <Route path="/assessments" element={<div>Assessments Component</div>} />
-            <Route path="/threads" element={<div>Threads Component</div>} />
+            <Route path="/assessments" element={<Assessment/>} />
+            <Route path="/threads" element={<Threads />} /> {/* Add Threads route */}
             <Route path="/groups" element={<div>Groups Component</div>} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/chat" element={<Chatbot />} /> {/* for chatbot */}
@@ -46,14 +52,14 @@ function App() {
                   </div>
 
                   <section className="row">
-                    <a href="/latest" className="latest">
+                    <a href="/assessments" className="latest">
                       <div>
                         <h5>Latest:</h5>
                         <p>Take our free breast cancer self-assessment NOW!</p>
                       </div>
                     </a>
 
-                    <a href="/new-moms" className="new-moms-quicklink">
+                    <a href="/groups" className="new-moms-quicklink">
                       <div>
                         <h5>New Mom:</h5>
                         <p>Join our Maternity Support Group</p>
