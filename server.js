@@ -2,10 +2,13 @@
 // BACKEND
 
 require('dotenv').config();
+
 const express = require('express');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
+const bcrypt = require('bcrypt'); // for password hashing (security)
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -43,6 +46,7 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -58,7 +62,7 @@ app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
   const user = await UserModel.findOne({ username });
-  if (user && user.password === password) {
+  if (user && await bcrypt.compare(password, user.password)) {
     res.json({ success: true, message: 'Login successful' });
   } else {
     res.json({ success: false, message: 'Invalid credentials' });
@@ -68,8 +72,9 @@ app.post('/api/login', async (req, res) => {
 // Register route for creating new users
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
+  const hashedPass = await bcrypt.hash(password, 10); //10 rounds of hashing
 
-  const newUser = new UserModel({ username, password });
+  const newUser = new UserModel({ username, password: hashedPass });
 // 500 is error; 201 is successful (created)
   newUser.save()
     .then(() => res.status(201).json({ success: true, message: 'User registered' }))

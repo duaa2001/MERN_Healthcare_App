@@ -9,12 +9,13 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import {Link, Routes, Route } from "react-router-dom";
+import {Link, Routes, Route, useNavigate } from "react-router-dom";
 import SignUp from "./LSignup"; // Import LSignup component
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     async function submit(e) {
         e.preventDefault(); //do not reload page upon submission
@@ -23,8 +24,12 @@ function Login() {
         try {
             const response = await axios.post('http://localhost:5001/api/login', { username, password });
             // Handle successful login here
-            console.log(response.data);
-            console.log("Login was successful");
+            console.log(response.data.message); // Log the response message
+            if (response.data.success) {
+                setUsername(''); // Clear username field
+                setPassword(''); // Clear password field
+                navigate('/');
+            }
         } catch (error) {
             console.error('Login error:', error);
         }
