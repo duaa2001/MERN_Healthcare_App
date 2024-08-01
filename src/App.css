@@ -1,38 +1,21 @@
-<<<<<<< HEAD
 /* App container styling */
 .App {
   text-align: center;
   background-color: #E6E6FA; /* Light lavender background */
   height: 100vh; /* Full viewport height */
-=======
-/* Full CSS design */
-
-/* HOME PAGE */
-
-/* Set up homepage layout */
-.App {
-  text-align: center;
-  background-color: #E6E6FA; 
-  min-height: 100vh; 
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 100px;
 }
 
-<<<<<<< HEAD
 /* Header styling */
-=======
-/* title layout */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .App-header {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-<<<<<<< HEAD
 /* Navigation bar styling */
 .Nav-bar {
   display: flex;
@@ -47,22 +30,6 @@
   font-size: 5rem; /* Large font size */
   color: #FF69B4; /* Hot pink color */
   font-style: oblique; /* Italicized */
-=======
-/* nav bar layout */
-.Nav-bar {
-  display: flex;
-  justify-content: space-around; 
-  background-color: lavender; 
-  width: 80%;
-}
-
-/* Femcare title */
-.App-header h1 {
-  font-size: 5rem; 
-  color: #FF69B4 !important;
-  font-style: oblique;
-  margin-top: auto;
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
   margin-bottom: 0;
   text-shadow: 
     -1px -1px 0 #5b022e,  /* Shadow directions */
@@ -71,46 +38,25 @@
     1px 1px 0 #5b022e;
 }
 
-<<<<<<< HEAD
 /* Header subtitle styling */
-=======
-/* ensure home link color is the same as title */
-.home-link {
-  color: #FF69B4; 
-}
-
-/* we all care subtitle */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .App-header h4 {
   font-size: 1.5rem; /* Smaller font size */
   color: #FF69B4; /* Hot pink color */
   margin-top: 0;
 }
 
-<<<<<<< HEAD
 /* Main content area padding */
-=======
-/* Spacing between top of homepage and the rest of main content */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .Main-content {
   padding: 50px;
 }
 
-<<<<<<< HEAD
 /* Image container styling */
-=======
-/* size our image */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .image-container img { 
   max-width: 100%; 
   max-height: auto; 
 }
 
-<<<<<<< HEAD
 /* Row container styling */
-=======
-/* sets up our content in a row */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .row {
   display: flex;
   justify-content: space-around;
@@ -119,11 +65,7 @@
   background-color: rgb(242, 228, 243);
 }
 
-<<<<<<< HEAD
 /* Row links styling */
-=======
-/* sets up each of the 3 contents as circular containers */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .row a {
   display: flex;
   justify-content: center;
@@ -134,7 +76,6 @@
   height: 200px;
   border-radius: 50%;
   margin: 10px;
-<<<<<<< HEAD
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,17 +103,6 @@
 .new-moms-quicklink  {
   background-color: pink;
   color: rgb(238, 93, 9) !important;
-=======
-}
-
-/* distinct coloring for each of the 3 content containers */
-.latest {
-  background-color: rgb(0, 58, 183);
-}
-
-.new-moms-quicklink {
-  background-color: rgb(232, 83, 14);
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 }
 
 /* Specific styling for the Chat Bot link */
@@ -180,7 +110,6 @@
   background-color: rgb(2, 146, 2);
 }
 
-<<<<<<< HEAD
 /* Header five (h5) styling */
 h5 {
   margin-top: 0;
@@ -199,11 +128,6 @@ h5 {
 }
 
 /* FAQ content container styling */
-=======
-/* FAQ PAGE */
-
-/* set up whole layout*/
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .faq-content {
   max-width: 800px;
   margin: 0 auto;
@@ -214,42 +138,23 @@ h5 {
   color: rgb(81, 2, 75);
 }
 
-<<<<<<< HEAD
 /* FAQ title styling */
-=======
-/* distinguish "about us" from rest of the content*/
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .faq-content h2 {
   text-align: center;
 }
 
-<<<<<<< HEAD
 /* FAQ paragraph immediately following the title */
-=======
-/* distinguish content in about us */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .faq-content h2 + p {
   text-align: center;
 }
 
-<<<<<<< HEAD
 /* Resources title styling */
-=======
-/* RESOURCES PAGE */
-
-/* title */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .resources h2 {
   font-size: 2.5rem;
 }
 
-<<<<<<< HEAD
 /* Resources list styling */
 .resources ul {
-=======
-/* layout of each term and its content */
-.resources li {
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
   list-style: none;
   border: 1px solid #ccc; 
   border-radius: 5px; 
@@ -258,13 +163,7 @@ h5 {
   background-color: rgba(237, 237, 237, 0.939);
 }
 
-<<<<<<< HEAD
 /* Chatbot container styling */
-=======
-/* CHATBOT */
-
-/* set up chatbot container */
->>>>>>> 46af9a052d327195b1c284177b9e5b7c83ec56ff
 .chatbot-container {
   border: 1px solid #ccc;
   background-color: rgb(2, 146, 2);

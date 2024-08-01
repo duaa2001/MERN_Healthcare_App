@@ -9,7 +9,7 @@ import Threads from './components/Threads';
 import Assessment from './components/Assessments';
 import Groups from './components/Groups';
 import GroupDetail from './components/GroupDetail';
-import groups from './groupsData';
+import groups from './components/groupDatas';
 import './App.css';
 
 function App() {
