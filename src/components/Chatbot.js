@@ -18,6 +18,7 @@ const handleMessage = () => {
     setInput('');
 };
 
+//Basic Chatbot response set up
 const getResponse = (message) => {
     if (message.toLowerCase().includes('hello')) {
         return 'Hello! How may I help you today?';
@@ -38,7 +39,11 @@ const getResponse = (message) => {
     }
 };
 
+
+// Takes in input, sends back output based on that and clears input 
 return (
+    <div>
+        <h3>Introducing our Chat Bot...</h3>
     <div className="chatbot-container">
         <div className="chatbot-output">
             <p>{output}</p>
@@ -52,6 +57,7 @@ return (
             />
             <button onClick={handleMessage}>Click to send</button>
         </div>
+    </div>
     </div>
 );
 };

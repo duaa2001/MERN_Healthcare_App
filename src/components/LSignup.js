@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 //similar to login, very basic 
 
 function LSignup() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     async function submit(e) {
         e.preventDefault();
 
         //call backend register new user 
         try {
-            await axios.post('http://localhost:5001/api/register', { username, password });
-            console.log("Sign up successful");
+            const response = await axios.post('http://localhost:5001/api/register', { username, password });
+            console.log(response.data.message); // Log the response message
+            if (response.data.success) {
+                setUsername(''); // Clear username field
+                setPassword(''); // Clear password field
+                navigate('/login');
+            }
         } catch (error) {
             console.error('Registration error:', error);
         }
