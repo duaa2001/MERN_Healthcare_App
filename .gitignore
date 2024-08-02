@@ -3,8 +3,8 @@
 
 /.env
 
-# production
-/build
+# production remove
+# /build
 
 # misc
 .DS_Store
