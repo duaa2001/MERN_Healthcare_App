@@ -23,9 +23,7 @@ mongoose.connect(database_url)
     console.error('Error connecting to MongoDB', error);
   });
 
-  app.use(cors({
-    origin: 'https://healthcare-app-alpha.vercel.app' // Allow requests from your frontend
-  })); // middleware, connecting to https
+app.use(cors()); // middleware, connecting to https
 app.use(express.json()); //express reads json files
 app.use(express.urlencoded({extended:true})); //url to express
 
