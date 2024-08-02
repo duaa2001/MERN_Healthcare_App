@@ -8,29 +8,29 @@ import Login from './components/Login';
 import Threads from './components/Threads';
 import Assessment from './components/Assessments';
 import Groups from './components/Groups';
-import GroupDetail from './components/GroupDetail';
-import groups from './components/groupDatas';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          <h1>
-            <Link to="/" className="home-link">FEMCARE</Link>
-          </h1> {/* Title */}
-          <h4>....We all care</h4> {/* Subtitle */}
-        </header>
+      {/* Move the nav element above the header */}
+      <nav className="Nav-bar">
+        <Link to="/login">Login</Link>
+        <Link to="/resources">Resources</Link>
+        <Link to="/assessments">Assessments</Link>
+        <Link to="/threads">Threads</Link>
+        <Link to="/groups">Groups</Link>
+        <Link to="/faq">FAQ</Link>
+      </nav>
 
-        <nav className="Nav-bar">
-          <Link to="/login">Login</Link>
-          <Link to="/resources">Resources</Link>
-          <Link to="/assessments">Assessments</Link>
-          <Link to="/threads">Threads</Link>
-          <Link to="/groups">Groups</Link>
-          <Link to="/faq">FAQ</Link>
-        </nav>
+      <header className="App-header">
+        <h1>
+          <Link to="/" className="home-link">FEMCARE</Link>
+        </h1> {/* Title */}
+        <h4>....We all care</h4> {/* Subtitle */}
+      </header>
+    
 
         <main className="Main-content">
           <Routes>
@@ -38,8 +38,7 @@ function App() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/assessments" element={<Assessment />} />
             <Route path="/threads" element={<Threads />} />
-            <Route path="/groups" element={<Groups groups={groups} />} />
-            <Route path="/groups/:section" element={<GroupDetail groups={groups} />} />
+            <Route path="/groups" element={<Groups />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/chat" element={<Chatbot />} />
             <Route
