@@ -35,11 +35,11 @@
 }
 
 .Nav-bar a {
-  font-size: 1.5rem; /* Increase font size for modern look */
-  font-weight: bold; /* Make text bold for emphasis */
+  font-size: 1.5rem; 
+  font-weight: bold; 
   color: rgb(102, 0, 78);
-  padding: 10px 20px; /* Adjust padding for a larger clickable area */
-  text-decoration: none; /* Remove underline for cleaner look */
+  padding: 10px 20px; 
+  text-decoration: none; 
 }
 
 .Nav-bar a:hover {
@@ -172,19 +172,24 @@ h5 {
 
 /* Resources Page */
 
+.resources ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+}
+
 /* Resources title styling */
 .resources h2 {
   font-size: 2.5rem;
 }
 
 /* Resources list styling */
-.resources ul {
-  list-style: none;
+.resources li {
   border: 1px solid #ccc; 
   border-radius: 5px; 
-  padding: 10px; 
-  margin-bottom: 5px;
-  background-color: rgba(237, 237, 237, 0.939);
+  padding: 15px; 
+  margin-bottom: 10px; 
+  background-color: rgba(237, 237, 237, 0.939); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 /* Chatbot container styling */
