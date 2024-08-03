@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { getBaseUrl } from "../environments/baseurl";
 
 const Resources = () => {
   const [terms, setTerms] = useState([]);
