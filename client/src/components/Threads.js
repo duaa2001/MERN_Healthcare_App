@@ -65,7 +65,7 @@ function Threads() {
     const handleDeleteThread = async (threadId) => {
         try {
             // Send a delete request to the server
-            await axios.delete(`http://localhost:5001/api/threads/${threadId}`);
+            await axios.delete(`${getBaseUrl()}/api/threads/${threadId}`);
     
             // Remove the deleted thread from the state
             const updatedThreads = threads.filter(thread => thread._id !== threadId);

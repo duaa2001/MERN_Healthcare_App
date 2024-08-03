@@ -11,7 +11,7 @@ const Resources = () => {
 
   //Get the glossary 
   useEffect(() => {
-    axios.get('http://localhost:5001/api/glossary') //from backend
+    axios.get(`${getBaseUrl()}/api/glossary`) //from backend
       .then(response => {
         setTerms(response.data.glossary); // Access the glossary array directly
         setLoading(false);

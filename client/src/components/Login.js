@@ -23,7 +23,7 @@ function Login() {
 
         //calling the backend login
         try {
-            const response = await axios.post('http://localhost:5001/api/login', { username, password });
+            const response = await axios.post(`${getBaseUrl()}/api/login`, { username, password });
             // Handle successful login here
             console.log(response.data.message); // Log the response message
             if (response.data.success) {

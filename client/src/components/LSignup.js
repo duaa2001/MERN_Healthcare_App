@@ -15,7 +15,7 @@ function LSignup() {
 
         //call backend register new user 
         try {
-            const response = await axios.post('http://localhost:5001/api/register', { username, password });
+            const response = await axios.post(`${getBaseUrl()}/api/register`, { username, password });
             console.log(response.data.message); // Log the response message
             if (response.data.success) {
                 setUsername(''); // Clear username field
