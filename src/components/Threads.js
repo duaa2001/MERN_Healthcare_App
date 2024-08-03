@@ -84,7 +84,7 @@ function Threads() {
                     type="text"
                     value={newThread}
                     onChange={(e) => setNewThread(e.target.value)}
-                    placeholder="Add a new thread"
+                    placeholder="Start a new thread"
                 />
                 <button type="submit">New Thread</button>
             </form>
