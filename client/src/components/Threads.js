@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getBaseUrl } from "../environments/baseurl";
 
 function Threads() {
     const [threads, setThreads] = useState([]);
@@ -13,7 +14,7 @@ function Threads() {
     useEffect(() => {
         async function fetchThreads() {
             try {
-                const response = await axios.get('http://localhost:5001/api/threads');
+                const response = await axios.get(`${getBaseUrl()}/api/threads`);
                 setThreads(response.data);
             } catch (error) {
                 console.error('Error fetching threads:', error);
@@ -26,7 +27,7 @@ function Threads() {
     const handleThreadSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5001/api/threads', { content: newThread });
+            const response = await axios.post(`${getBaseUrl()}/api/threads`, { content: newThread });
             setThreads([...threads, response.data]);
             setNewThread("");
         } catch (error) {
@@ -38,7 +39,7 @@ function Threads() {
     const handleCommentSubmit = async (threadId, e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5001/api/threads/${threadId}/comments`, { content: newComment[threadId] || "" });
+            const response = await axios.post(`${getBaseUrl()}/api/threads/${threadId}/comments`, { content: newComment[threadId] || "" });
             const updatedThreads = threads.map((thread) => {
                 if (thread._id === threadId) {
                     return {

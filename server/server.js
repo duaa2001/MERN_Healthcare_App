@@ -142,6 +142,10 @@ app.delete('/api/threads/:threadId', async (req, res) => {
 //////////////////////////////////////////////////////////////////////////////
 
 // Run backend
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+
+if(process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port http://localhost:${PORT}`);
+  });
+}
+module.exports = app;
