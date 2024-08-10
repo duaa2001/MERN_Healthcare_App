@@ -1,4 +1,4 @@
-/* Add Responsive Design!! */
+/* Separate these in different files */
 
 /* App container styling */
 
@@ -369,4 +369,67 @@ h5 {
   text-decoration: underline;
 }
 
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+  .App {
+    padding: 50px;
+  }
+
+  .Nav-bar {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .Nav-bar a {
+    font-size: 1.2rem; 
+    padding: 8px 15px; 
+  }
+
+  .App-header h1 {
+    font-size: 3rem;
+  }
+
+  .App-header h4 {
+    font-size: 1.2rem;
+  }
+
+  .row {
+    flex-direction: column;
+    margin: 10px 0;
+    max-height: 350px;
+  }
+
+  .row a {
+    width: 150px; 
+    height: 150px; 
+    font-size: 12px;
+    margin: 5px;
+  }
+}
+
+/* Threads - responsive */
+
+@media (max-width: 768px) {
+  .thread-container {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .comment-container {
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  .threads button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .thread-container h3 {
+    font-size: 1.5rem;
+  }
+}
 
