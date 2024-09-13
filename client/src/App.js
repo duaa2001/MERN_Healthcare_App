@@ -1,5 +1,4 @@
-// src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import FAQ from './components/FAQ';
 import Resources from './components/Resources';
@@ -11,44 +10,79 @@ import Groups from './components/Groups';
 import './App.css';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+  const [showLoginForm, setShowLoginForm] = useState(false); // Toggle to show login form
+  const [username, setUsername] = useState('');
+
+  // Handle login form submission
+  const handleLoginSubmit = (username) => {
+    setIsLoggedIn(true);
+    setUsername(username);
+    setShowLoginForm(false); // Hide login form after login
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUsername('');
+  };
+
   return (
     <Router>
       <div className="App">
-      {/* Move the nav element above the header */}
-      <nav className="Nav-bar">
-        <Link to="/login">Login</Link>
-        <Link to="/resources">Resources</Link>
-        <Link to="/assessments">Assessments</Link>
-        <Link to="/threads">Threads</Link>
-        <Link to="/groups">Groups</Link>
-        <Link to="/faq">FAQ</Link>
-      </nav>
+        {/* Navigation Bar */}
+        <nav className="Nav-bar">
+          <Link to="/" className="nav-link">HOME</Link>
+          <Link to="/resources" className="nav-link">Resources</Link>
+          <Link to="/assessments" className="nav-link">Assessments</Link>
+          <Link to="/threads" className="nav-link">Threads</Link>
+          <Link to="/groups" className="nav-link">Groups</Link>
+          <Link to="/faq" className="nav-link">FAQ</Link>
+        </nav>
 
-      <header className="App-header">
-        <h1>
-          <Link to="/" className="home-link">FEMCARE</Link>
-        </h1> {/* Title */}
-        <h4>....We all care</h4> {/* Subtitle */}
-      </header>
-    
+        {/* Header Section */}
+        <header className="App-header">
+          <h1>
+            <Link to="/" className="home-link">FEMCARE</Link>
+          </h1>
+          <h4 className="subtitle">....We all care</h4>
+        </header>
 
+        {/* Main Content */}
         <main className="Main-content">
           <Routes>
-            <Route path="/login/*" element={<Login />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/assessments" element={<Assessment />} />
-            <Route path="/threads" element={<Threads />} />
-            <Route path="/groups" element={<Groups />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/chat" element={<Chatbot />} />
+            {/* Homepage Route */}
             <Route
               path="/"
               element={
                 <div>
+                  {/* If user is not logged in */}
+                  {!isLoggedIn ? (
+                    <div>
+                      {/* Show Join button if login form is not visible */}
+                      {!showLoginForm && (
+                        <button className="join-button" onClick={() => setShowLoginForm(true)}>
+                          Join
+                        </button>
+                      )}
+
+                      {/* Show Login form when Join button is clicked */}
+                      {showLoginForm && (
+                        <Login handleLoginSubmit={handleLoginSubmit} />
+                      )}
+                    </div>
+                  ) : (
+                    <div className="welcome-section">
+                      <p>Welcome, {username}!</p>
+                      <button className="logout-button" onClick={handleLogout}>Logout</button>
+                    </div>
+                  )}
+
+                  {/* Other homepage content */}
                   <div className="image-container">
                     <img
                       src="/American Medical Association image.jpeg"
-                      alt="taken from American Medical Association"
+                      alt="American Medical Association"
                     />
                   </div>
 
@@ -77,11 +111,31 @@ function App() {
                 </div>
               }
             />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/assessments" element={<Assessment />} />
+            <Route path="/threads" element={<Threads />} />
+            <Route path="/groups" element={<Groups />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/chat" element={<Chatbot />} />
           </Routes>
         </main>
+
+        {/* Footer Section */}
+        <footer className="App-footer">
+          <p>&copy; 2024 FEMCARE. All rights reserved.</p>
+          <ul className="footer-links">
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </footer>
       </div>
     </Router>
   );
 }
 
 export default App;
+
+
+
+

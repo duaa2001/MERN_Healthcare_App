@@ -1,74 +1,108 @@
-// can use online video for this
-//Check out server.js file, backend is already set up for this, can organize after
-
-//username and password 
-
-// need a create account 
-
-// need a login
-
 import React, { useState } from "react";
 import axios from "axios";
-import {Link, Routes, Route, useNavigate } from "react-router-dom";
-import SignUp from "./LSignup"; // Import LSignup component
 import { getBaseUrl } from "../environments/baseurl";
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const [loginMessage, setLoginMessage] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(false); // Toggle between login and signup
+    const [error, setError] = useState(''); // Error message state
 
     async function submit(e) {
-        e.preventDefault(); //do not reload page upon submission
+        e.preventDefault();
 
-        //calling the backend login
+        // Frontend validation
+        if (username.length < 8) {
+            setError('Username must be at least 8 characters long');
+            return;
+        }
+        if (password.length < 6) {
+            setError('Password must be at least 6 characters long');
+            return;
+        }
+
+        const url = isSignUp ? `${getBaseUrl()}/api/register` : `${getBaseUrl()}/api/login`;
+
         try {
-            const response = await axios.post(`${getBaseUrl()}/api/login`, { username, password });
-            // Handle successful login here
-            console.log(response.data.message); // Log the response message
+            const response = await axios.post(url, { username, password });
             if (response.data.success) {
-                setUsername(''); // Clear username field
-                setPassword(''); // Clear password field
-                navigate('/');
+                setLoginMessage(`Hey there, ${username}!`);
+                setLoggedIn(true);
+                localStorage.setItem('username', username); // Store username in localStorage
+                setUsername('');
+                setPassword('');
+            } else {
+                setError(response.data.message || 'Error during login or sign-up');
             }
         } catch (error) {
-            console.error('Login error:', error);
+            setError(`${isSignUp ? 'Sign-up' : 'Login'} error: ${error.message}`);
         }
     }
- 
-    // Setting it up
+
+    function logout() {
+        setLoggedIn(false);
+        setLoginMessage('');
+        localStorage.removeItem('username'); // Remove username from storage when logging out
+    }
+
     return (
-        <div className="login">
-            <h2>Login</h2>
-            <form onSubmit={submit}>
-                <div>
-                    <label>Username</label>
-                    <input 
-                        type="text" 
-                        value={username} 
-                        onChange={(e) => setUsername(e.target.value)} 
-                        required 
-                    />
+        <div className="login-container">
+            {loggedIn ? (
+                <div className="login-message">
+                    <h2>{loginMessage}</h2>
+                    <button onClick={logout} className="logout-button">Logout</button>
                 </div>
-                <div>
-                    <label>Password</label>
-                    <input 
-                        type="password" 
-                        value={password} 
-                        onChange={(e) => setPassword(e.target.value)} 
-                        required 
-                    />
+            ) : (
+                <div className="login-form">
+                    <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
+                    {error && <p className="error-message">{error}</p>}
+                    <form onSubmit={submit}>
+                        <div>
+                            <label>Username</label>
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
+                    </form>
+                    <p>
+                        {isSignUp ? (
+                            <>
+                                Already have an account?{" "}
+                                <button onClick={() => setIsSignUp(false)} className="toggle-link">
+                                    Log In
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                Don't have an account?{" "}
+                                <button onClick={() => setIsSignUp(true)} className="toggle-link">
+                                    Sign Up
+                                </button>
+                            </>
+                        )}
+                    </p>
                 </div>
-                <button type="submit">Login</button>
-            </form>
-            <p>
-                OR... <Link to="/login/signup">Sign Up</Link>
-            </p>
-            <Routes>
-                <Route path="signup" element={<SignUp />} /> {/* Add SignUp route here */}
-            </Routes>
+            )}
         </div>
     );
 }
 
 export default Login;
+
+
+
