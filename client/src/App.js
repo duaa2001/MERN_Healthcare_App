@@ -34,9 +34,9 @@ function App() {
         <nav className="Nav-bar">
           <Link to="/" className="nav-link">HOME</Link>
           <Link to="/resources" className="nav-link">Resources</Link>
-          <Link to="/assessments" className="nav-link">Assessments</Link>
-          <Link to="/threads" className="nav-link">Threads</Link>
           <Link to="/groups" className="nav-link">Groups</Link>
+          <Link to="/threads" className="nav-link">Threads</Link>
+          <Link to="/assessments" className="nav-link">Assessments</Link>
           <Link to="/faq" className="nav-link">FAQ</Link>
         </nav>
 

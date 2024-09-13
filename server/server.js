@@ -90,53 +90,81 @@ const CommentSchema = new mongoose.Schema({
     required: true }
 });
 
-// Thread Schema
+// Thread Schema 
 const ThreadSchema = new mongoose.Schema({
   content: { 
     type: String, 
-    required: true },
-    comments: [CommentSchema]
-}, { timestamps: true }); //possibly make thread id equal to time?
+    required: true 
+  },
+  username: { 
+    type: String, 
+    required: true // Ensure thread is tied to a user 
+  },
+  comments: [CommentSchema]
+}, { timestamps: true });
 
 const ThreadModel = mongoose.model('Thread', ThreadSchema);
 
-// Get all threads (to display)
+// Fetch all threads (visible to everyone)
 app.get('/api/threads', async (req, res) => {
-  const threads = await ThreadModel.find();
-  res.json(threads);
+  try {
+    const threads = await ThreadModel.find(); // Fetch all threads
+    res.json(threads);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch threads' });
+  }
 });
 
-// Create a new Thread 
+// Create a new thread with username
 app.post('/api/threads', async (req, res) => {
-  const newThread = new ThreadModel({ content: req.body.content });
+  const { content, username } = req.body;
+
+  if (!username || !content) {
+    return res.status(400).json({ success: false, message: 'Username and content are required' });
+  }
+
+  const newThread = new ThreadModel({ content, username });
   await newThread.save();
   res.status(201).json(newThread);
 });
 
 // Post a Comment to Thread
 app.post('/api/threads/:threadId/comments', async (req, res) => {
+  const { content, username } = req.body;
   const thread = await ThreadModel.findById(req.params.threadId);
+
   if (!thread) {
     return res.status(404).json({ message: 'Thread not found' });
   }
-  thread.comments.push({ content: req.body.content });
+
+  if (!username || !content) {
+    return res.status(400).json({ message: 'Username and content are required' });
+  }
+
+  thread.comments.push({ content, username });
   await thread.save();
   res.status(201).json(thread.comments[thread.comments.length - 1]);
-  // push comment to end of array
 });
 
 // Find and Delete a Thread
 app.delete('/api/threads/:threadId', async (req, res) => {
-  try {
-    const thread = await ThreadModel.findByIdAndDelete(req.params.threadId);
-    if (!thread) {
-      return res.status(404).json({ message: 'Thread not found' });
-    }
-    res.status(200).json({ message: 'Thread deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  const { username } = req.body;
+  const thread = await ThreadModel.findById(req.params.threadId);
+
+  if (!thread) {
+    return res.status(404).json({ message: 'Thread not found' });
   }
+
+  // Check if the logged-in user is the creator of the thread
+  if (thread.username !== username) {
+    return res.status(403).json({ message: 'Unauthorized: Only the creator can delete this thread' });
+  }
+
+  await thread.remove(); // Remove the thread if the user is authorized
+  res.status(200).json({ message: 'Thread deleted successfully' });
 });
+
+
 // ^^ basic CRUD operations (Read, Create, Update (with comments), Delete)
 
 //////////////////////////////////////////////////////////////////////////////
