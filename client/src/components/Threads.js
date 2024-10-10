@@ -10,6 +10,8 @@ function Threads() {
     const [newComment, setNewComment] = useState({}); // Store comments linked to thread IDs
     const username = localStorage.getItem('username'); // Get logged-in user's username from localStorage
 
+    // Optimize with pagination, allowing user to click "view more" threads
+    
     // Fetch all threads when the component mounts
     useEffect(() => {
         async function fetchThreads() {

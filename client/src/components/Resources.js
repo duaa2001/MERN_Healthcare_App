@@ -23,6 +23,8 @@ const Resources = () => {
       });
   }, []); // empty array arg ensures data is fetched only once 
 
+  // Consider LAZY LOADING here to optimize loading glossary, load in chunks as user scrolls
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -39,7 +41,7 @@ const Resources = () => {
         {terms.map(term => (
           <li key={term.title}>
             <h3>{term.title}</h3>
-            <p>{term.content}</p>
+            <div>{term.content.replace(/<\/?p>/g, '')}</div>
             {term.url && <a href={`https://www.healthcare.gov${term.url}`} >Click to read more</a>}
           </li>
         ))}
