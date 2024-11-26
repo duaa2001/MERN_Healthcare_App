@@ -12,6 +12,8 @@ const Groups = () => {
   ];
 
   return (
+
+    // possibly add a search component here (for scalability)
     <div className="groups-container">
       <h2>Community Groups</h2>
       <p>Welcome to the community groups. Join a group that interests you and start engaging with others!</p>
